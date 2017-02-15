@@ -1,0 +1,14 @@
+---
+- file:
+    path: /home/{{ user }}/nextcloud/build-linux
+    state: directory
+
+- name: cmake
+  command: chdir=/home/{{ user }}/nextcloud/build-linux cmake -D OEM_THEME_DIR=/home/{{ user }}/nextcloud/nextcloudtheme /home/{{ user }}/nextcloud/client
+
+- name: make
+  command: chdir=/home/{{ user }}/nextcloud/build-linux make
+
+- name: make install
+  command: chdir=/home/{{ user }}/nextcloud/build-linux make install
+  become: true    

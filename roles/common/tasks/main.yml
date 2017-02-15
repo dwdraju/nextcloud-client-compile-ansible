@@ -1,0 +1,23 @@
+---
+- name: apt-get update
+  apt:
+    update_cache: yes
+  become: true
+
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+   - git-core
+   - cmake
+  become: true 
+
+- name: Ensure github.com is a known host
+  lineinfile:
+    dest: /home/{{ user }}/.ssh/known_hosts
+    create: yes
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+    regexp: "^github\\.com"

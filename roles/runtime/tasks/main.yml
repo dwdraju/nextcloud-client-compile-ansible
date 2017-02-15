@@ -1,0 +1,7 @@
+---
+- lineinfile:
+    state: present
+    dest: /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+    line: /usr/local/lib/x86_64-linux-gnu
+  notify: run ldconfig
+  become: true

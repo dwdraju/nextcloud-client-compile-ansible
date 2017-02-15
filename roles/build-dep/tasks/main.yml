@@ -1,0 +1,6 @@
+---
+- name: install build-dep for owncloud-client
+  apt:
+    pkg: owncloud-client
+    state: build-dep
+  become: true

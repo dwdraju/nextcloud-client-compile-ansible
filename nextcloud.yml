@@ -1,0 +1,8 @@
+---
+- hosts: nextcloud
+  roles:
+    - common
+    - git-clone
+    - { role: build-dep, tags: build }
+    - { role: make, tags: make}
+    - { role: runtime, tags: run}

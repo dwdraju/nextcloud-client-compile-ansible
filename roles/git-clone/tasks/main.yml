@@ -1,0 +1,8 @@
+---
+- name: Git clone
+  git:
+    repo: https://github.com/nextcloud/client_theming.git
+    dest: /home/{{ user }}/nextcloud
+
+- name: Submodule update
+  command: chdir=/home/{{ user }}/nextcloud git submodule update --init --recursive

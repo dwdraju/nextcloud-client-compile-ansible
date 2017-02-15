@@ -1,0 +1,4 @@
+---
+  - name: run ldconfig
+    action: command /sbin/ldconfig
+    become: true
